@@ -50,6 +50,11 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10 * time.Second)
 	defer cancel()
 
+	if len(os.Args) < 2 {
+		fmt.Println("No username specified")
+		os.Exit(1)
+	}
+
 	user := os.Args[1]
 
 	req, err := makeUserEventsRequest(user, ctx)
